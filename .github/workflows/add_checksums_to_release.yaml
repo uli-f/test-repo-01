@@ -19,6 +19,7 @@ env:
   ASSETS_FOLDER: 'assets'
   BINARY_RELEASE_ASSETS_FOLDER: 'binary'
   CHECKSUM_RELEASE_ASSETS_FOLDER: 'checksum'
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   add_checksums_to_release:
