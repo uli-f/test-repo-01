@@ -32,10 +32,11 @@ jobs:
           mkdir --parents ${{ env.ASSETS_FOLDER }}/${{ env.CHECKSUM_RELEASE_ASSETS_FOLDER }}
        
       - name: 🔽 Download release assets matching the pattern ${{ env.BINARY_RELEASE_ASSETS_PATTERN }}
-        run: gh release download ${{ inputs.release-tag }} \
-          --repo ${{ github.repository }} \
-          --pattern ${{ env.BINARY_RELEASE_ASSET_PATTERN }} \
-          --dir ${{ env.ASSETS_FOLDER }}/${{ env.BINARY_RELEASE_ASSETS_FOLDER }}
+        run: |
+          gh release download ${{ inputs.release-tag }} \
+            --repo ${{ github.repository }} \
+            --pattern ${{ env.BINARY_RELEASE_ASSET_PATTERN }} \
+            --dir ${{ env.ASSETS_FOLDER }}/${{ env.BINARY_RELEASE_ASSETS_FOLDER }}
 
       - name: 👓 Generate sha256 and sha512 checksums for release assets matching ${{ env.BINARY_RELEASE_ASSETS_PATTERN }}
         working-directory: ${{ env.ASSETS_FOLDER }}
