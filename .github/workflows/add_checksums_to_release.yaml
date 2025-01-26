@@ -73,3 +73,9 @@ jobs:
           tag: ${{ inputs.release-tag }}
           # Ensures that re-runs of a workflow don't fail.
           overwrite: true
+
+      - name: 🖨️ Print urls of all release assets of GitHub release ${{ inputs.release-tag }}
+        run: |
+          gh release view ${{ inputs.release-tag }} \
+            --repo ${{ github.repository }} --json assets | \
+            jq ".assets[] | { name: .name, url: .url }"
