@@ -28,14 +28,14 @@ jobs:
     steps:
       - name: 📁 create directory for release assets
         run: |
-          mkdir --parents ${{ env.ASSERTS_FOLDER }}/${{ env.BINARY_RELEASE_ASSETS_FOLDER }}
-          mkdir --parents ${{ env.ASSERTS_FOLDER }}/${{ env.CHECKSUM_RELEASE_ASSETS_FOLDER }}
+          mkdir --parents ${{ env.ASSETS_FOLDER }}/${{ env.BINARY_RELEASE_ASSETS_FOLDER }}
+          mkdir --parents ${{ env.ASSETS_FOLDER }}/${{ env.CHECKSUM_RELEASE_ASSETS_FOLDER }}
        
       - name: 🔽 Download release assets matching the pattern ${{ env.BINARY_RELEASE_ASSETS_PATTERN }}
         run: gh release download ${{ inputs.release-tag }} \
           --repo ${{ github.repository }} \
           --pattern ${{ env.BINARY_RELEASE_ASSET_PATTERN }} \
-          --dir ${{ env.ASSERTS_FOLDER }}/${{ env.BINARY_RELEASE_ASSETS_FOLDER }}
+          --dir ${{ env.ASSETS_FOLDER }}/${{ env.BINARY_RELEASE_ASSETS_FOLDER }}
 
       - name: 👓 Generate sha256 and sha512 checksums for release assets matching ${{ env.BINARY_RELEASE_ASSETS_PATTERN }}
         working-directory: ${{ env.ASSETS_FOLDER }}
@@ -67,7 +67,7 @@ jobs:
         id: upload_checksum_files_as_release_assets
         with:
           file-glob: true
-          file: ${{ env.ASSERTS_FOLDER }}/${{ env.CHECKSUM_RELEASE_ASSETS_FOLDER }}/*.txt
+          file: ${{ env.ASSETS_FOLDER }}/${{ env.CHECKSUM_RELEASE_ASSETS_FOLDER }}/*.txt
           tag: ${{ inputs.release-tag }}
           # Ensures that re-runs of a workflow don't fail.
           overwrite: true
