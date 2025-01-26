@@ -27,7 +27,7 @@ jobs:
     runs-on: 'ubuntu-24.04'
 
     steps:
-      - name: 📁 create directory for release assets
+      - name: 📁 Create directory for release assets
         run: |
           mkdir --parents ${{ env.ASSETS_FOLDER }}/${{ env.BINARY_RELEASE_ASSETS_FOLDER }}
           mkdir --parents ${{ env.ASSETS_FOLDER }}/${{ env.CHECKSUM_RELEASE_ASSETS_FOLDER }}
@@ -68,7 +68,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         id: upload_checksum_files_as_release_assets
         with:
-          file-glob: true
+          file_glob: true
           file: ${{ env.ASSETS_FOLDER }}/${{ env.CHECKSUM_RELEASE_ASSETS_FOLDER }}/*.txt
           tag: ${{ inputs.release-tag }}
           # Ensures that re-runs of a workflow don't fail.
