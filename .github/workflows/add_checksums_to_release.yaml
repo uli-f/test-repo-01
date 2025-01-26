@@ -73,7 +73,3 @@ jobs:
           tag: ${{ inputs.release-tag }}
           # Ensures that re-runs of a workflow don't fail.
           overwrite: true
-
-      - name: 🖨️ Print URL of checksums for fat jar artifact added to release
-        run: |
-          echo url to artifact ${{ steps.upload_checksum_files_as_release_assets.outputs.browser_download_url }}
