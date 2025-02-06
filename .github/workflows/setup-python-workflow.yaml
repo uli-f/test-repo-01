@@ -1,0 +1,14 @@
+name: Test to setup Python workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  set-up-python:
+    name: Setup Python
+    runs-on: 'ubuntu-24.04'
+    steps:
+      - name: Set up Python test with different python-version strings
+        uses: actions/setup-python@v5
+        with:
+          python-version: '>=3.9 <3.14'
