@@ -16,4 +16,4 @@ jobs:
       - name: Set up Python test with different python-version strings
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python-version-semver }}
+          python-version: "${{ inputs.python-version-semver }}"
