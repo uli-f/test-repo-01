@@ -2,6 +2,11 @@ name: Test to setup Python workflow
 
 on:
   workflow_dispatch:
+    inputs:
+      python-version-semver:
+        description: 'python semver string'
+        required: true
+        type: string
 
 jobs:
   set-up-python:
@@ -11,4 +16,4 @@ jobs:
       - name: Set up Python test with different python-version strings
         uses: actions/setup-python@v5
         with:
-          python-version: '>=3.9 <3.14'
+          python-version: ${{ inputs.python-version-semver }}
