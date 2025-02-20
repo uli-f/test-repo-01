@@ -1,0 +1,26 @@
+name: Callable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      git-ref:
+        description: "The git branch, tag or SHA that is checked out. Defaults to 'github.ref_name'."
+        required: false
+        type: string
+
+jobs:
+  job1:
+    name: job1
+    runs-on: "ubuntu-24.04"
+
+    steps:
+      - name: debug output
+        run: |
+          echo ${{ inputs.git-ref }}
+          echo ${{ github.ref_name }}
+          echo ${{ inputs.git-ref || github.ref_name }}
+
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.git-ref || github.ref_name }}
