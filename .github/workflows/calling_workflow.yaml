@@ -1,0 +1,16 @@
+name: Calling Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-tag:
+        description: 'The git tag of the release (e.g., v1.1.2).'
+        required: true
+        type: string
+
+jobs:
+  call_workflow:
+    name: 'Call workflow'
+    uses: ./.github/workflows/callable_workflow.yaml
+    with:
+      git-ref:  ${{ inputs.release-tag }}
