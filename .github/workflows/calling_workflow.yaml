@@ -1,6 +1,10 @@
 name: Calling Workflow
 
 on:
+  release:
+    types:
+      - released
+
   workflow_dispatch:
     inputs:
       release-tag:
@@ -13,4 +17,4 @@ jobs:
     name: 'Call workflow'
     uses: ./.github/workflows/callable_workflow.yaml
     with:
-      git-ref:  ${{ inputs.release-tag }}
+      git-ref: ${{ github.event_name == 'workflow_dispatch' && inputs.release-tag || github.ref_name }}
