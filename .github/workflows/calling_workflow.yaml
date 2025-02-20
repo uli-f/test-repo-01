@@ -16,5 +16,5 @@ jobs:
   call_workflow:
     name: 'Call workflow'
     uses: ./.github/workflows/callable_workflow.yaml
-    with:
-      git-ref: ${{ github.event_name == 'workflow_dispatch' && inputs.release-tag || github.ref_name }}
+#    with:
+#      git-ref: ${{ github.event_name == 'workflow_dispatch' && inputs.release-tag || github.ref_name }}
