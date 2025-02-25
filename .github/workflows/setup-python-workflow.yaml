@@ -34,6 +34,14 @@ jobs:
         if: ${{ env.BOOLEAN_VALUE_FALSE == 'false' }}
         run: echo BOOLEAN_VALUE_FALSE=${{ env.BOOLEAN_VALUE_FALSE }}
 
+      - name: Execute depending on value of BOOLEAN_VALUE_TRUE [BOOLEAN_VALUE_TRUE=${{ env.BOOLEAN_VALUE_TRUE }}]
+        if: ${{ env.BOOLEAN_VALUE_TRUE == 'false' }}
+        run: echo BOOLEAN_VALUE_TRUE=${{ env.BOOLEAN_VALUE_TRUE }}
+      
+      - name: Execute depending on value of BOOLEAN_VALUE_FALSE [BOOLEAN_VALUE_FALSE=${{ env.BOOLEAN_VALUE_FALSE }}]
+        if: ${{ env.BOOLEAN_VALUE_FALSE == 'true' }}
+        run: echo BOOLEAN_VALUE_FALSE=${{ env.BOOLEAN_VALUE_FALSE }}
+
       - name: Set up Python test with different python-version strings
         uses: actions/setup-python@v5
         with:
